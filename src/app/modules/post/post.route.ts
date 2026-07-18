@@ -9,7 +9,29 @@ router.post(
   authGuard(UserRole.USER, UserRole.ADMIN),
   postController.createPost,
 );
+
 router.get("/", postController.getAllPost);
+
+router.get("/stats", authGuard(UserRole.ADMIN), postController.getStats);
+
+router.get(
+  "/my-posts",
+  authGuard(UserRole.USER, UserRole.ADMIN),
+  postController.getMyPosts,
+);
+
 router.get("/:postId", postController.getPostById);
+
+router.patch(
+  "/:postId",
+  authGuard(UserRole.USER, UserRole.ADMIN),
+  postController.updatePost,
+);
+
+router.delete(
+  "/:postId",
+  authGuard(UserRole.USER, UserRole.ADMIN),
+  postController.deletePost,
+);
 
 export const postRoutes = router;
