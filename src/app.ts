@@ -4,6 +4,7 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./app/lib/auth";
 import cors from "cors";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler";
+import notFound from "./app/middlewares/notFound";
 
 const app: Application = express();
 
@@ -19,6 +20,9 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 
 // Basic route
 app.use("/api/v1", IndexRoutes);
+
+// Not Found 
+app.use(notFound)
 
 // Global error handler 
 app.use(globalErrorHandler)
