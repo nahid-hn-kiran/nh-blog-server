@@ -7,6 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "dev": "tsx --watch src/server.ts",
+    "seed:admin": "tsx watch src/scripts/seedAdmin.ts",
     "lint": "eslint ./src/**/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
